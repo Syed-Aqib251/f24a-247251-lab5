@@ -42,7 +42,18 @@
     const seat = event.target.closest("button.seat");
     if (!seat || !hall.contains(seat)) return;
     event.preventDefault();
-    if (seat.classList.contains("taken")) return;
+    // Free exactly one occupied seat, regardless of the input values.
+    if (seat.classList.contains("taken")) {
+      const oldName = seat.querySelector("span").textContent;
+      seat.querySelector("span").textContent = seat.dataset.n;
+      seat.classList.remove("taken");
+      seat.setAttribute("aria-pressed", "false");
+      seat.setAttribute("aria-label", "Seat " + seat.dataset.n + ", free");
+      seat.removeAttribute("title");
+      updateFreeSeats();
+      status.textContent = "Seat " + seat.dataset.n + " is now free. " + oldName + " has left that seat.";
+      return;
+    }
     const name = who.value.trim();
     if (name === "") return;
     const count = readCount();
