@@ -55,7 +55,11 @@
       return;
     }
     const name = who.value.trim();
-    if (name === "") return;
+    if (name === "") {
+      // The handout requires the literal undefined for an empty name.
+      status.textContent = String(undefined);
+      return;
+    }
     const count = readCount();
     if (count === null) return;
     const seats = Array.from(hall.querySelectorAll(".seat"));
