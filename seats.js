@@ -83,5 +83,6 @@
       nextSeat.title = name;
     }
     updateFreeSeats();
+    status.textContent = name + " reserved " + count + (count === 1 ? " seat" : " seats") + " starting at seat " + seat.dataset.n + ".";
   }
 })();
