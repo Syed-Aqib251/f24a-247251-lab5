@@ -14,8 +14,34 @@
     <p class="subtitle">Choose your place at the table.</p>
   </header>
   <main>
-    <section class="panel" aria-label="Canteen hall">
-      <h2>The seats</h2>
+    <section class="panel" aria-labelledby="hall-heading">
+      <div class="summary">
+        <h2 id="hall-heading">The seats</h2>
+        <div class="counter" aria-live="polite">Free seats: <strong id="free">8</strong> / 8</div>
+      </div>
+      <form id="booking-controls" class="controls" aria-label="Reservation details">
+        <label for="who">Name
+          <input id="who" name="who" type="text" placeholder="e.g. Ali" autocomplete="off" aria-describedby="name-help">
+          <span id="name-help" class="help">The same name can reserve another block.</span>
+        </label>
+        <label for="many">Seat count
+          <input id="many" name="many" type="text" inputmode="numeric" placeholder="e.g. 3" autocomplete="off" aria-describedby="count-help">
+          <span id="count-help" class="help">A whole number from 1 to 8.</span>
+        </label>
+      </form>
+      <p class="instruction">Click an empty seat to reserve a block starting there. Click a filled seat to free that seat.</p>
+      <div id="hall" role="group" aria-label="Eight canteen seats">
+        <button id="seat-1" class="seat" data-n="1" type="button" aria-label="Seat 1, free" aria-pressed="false"><span>1</span></button>
+        <button id="seat-2" class="seat" data-n="2" type="button" aria-label="Seat 2, free" aria-pressed="false"><span>2</span></button>
+        <button id="seat-3" class="seat" data-n="3" type="button" aria-label="Seat 3, free" aria-pressed="false"><span>3</span></button>
+        <button id="seat-4" class="seat" data-n="4" type="button" aria-label="Seat 4, free" aria-pressed="false"><span>4</span></button>
+        <button id="seat-5" class="seat" data-n="5" type="button" aria-label="Seat 5, free" aria-pressed="false"><span>5</span></button>
+        <button id="seat-6" class="seat" data-n="6" type="button" aria-label="Seat 6, free" aria-pressed="false"><span>6</span></button>
+        <button id="seat-7" class="seat" data-n="7" type="button" aria-label="Seat 7, free" aria-pressed="false"><span>7</span></button>
+        <button id="seat-8" class="seat" data-n="8" type="button" aria-label="Seat 8, free" aria-pressed="false"><span>8</span></button>
+      </div>
+      <p class="legend"><span><i class="swatch" aria-hidden="true"></i>Free</span><span><i class="swatch occupied" aria-hidden="true"></i>Taken</span></p>
+      <p id="status" role="status" aria-live="polite">Choose a free seat to reserve a block in the canteen.</p>
     </section>
   </main>
   <footer>Roll number: <strong>247251</strong> · Project 1 The seats</footer>
